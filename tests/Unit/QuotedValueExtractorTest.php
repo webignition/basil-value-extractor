@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace webignition\BasilValueExtractor\Tests\Unit;
 
 use phpmock\mockery\PHPMockery;
