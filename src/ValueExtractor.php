@@ -15,6 +15,14 @@ class ValueExtractor
         $this->identifierExtractor = $identifierExtractor;
     }
 
+    public static function createExtractor(): self
+    {
+        return new ValueExtractor(
+            QuotedValueExtractor::createExtractor(),
+            IdentifierExtractor::createExtractor()
+        );
+    }
+
     public function extract(string $string): ?string
     {
         $value = $this->identifierExtractor->extract($string);

@@ -20,7 +20,7 @@ class ElementIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     {
         parent::setUp();
 
-        $this->extractor = new ElementIdentifierExtractor();
+        $this->extractor = ElementIdentifierExtractor::createExtractor();
     }
 
     /**

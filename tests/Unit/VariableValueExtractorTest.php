@@ -20,7 +20,7 @@ class VariableValueExtractorTest extends \PHPUnit\Framework\TestCase
     {
         parent::setUp();
 
-        $this->extractor = new VariableValueExtractor();
+        $this->extractor = VariableValueExtractor::createExtractor();
     }
 
     /**
