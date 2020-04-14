@@ -14,6 +14,11 @@ class ElementIdentifierExtractor
     private const POSITION_FIRST = 'first';
     private const POSITION_LAST = 'last';
 
+    public static function createExtractor(): self
+    {
+        return new ElementIdentifierExtractor();
+    }
+
     public function extract(string $string): ?string
     {
         if (!$this->handles($string)) {

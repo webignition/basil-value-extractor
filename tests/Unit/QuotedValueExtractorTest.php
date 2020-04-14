@@ -21,7 +21,7 @@ class QuotedValueExtractorTest extends \PHPUnit\Framework\TestCase
     {
         parent::setUp();
 
-        $this->extractor = new QuotedValueExtractor();
+        $this->extractor = QuotedValueExtractor::createExtractor();
     }
 
     /**

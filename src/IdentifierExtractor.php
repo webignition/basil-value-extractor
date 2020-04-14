@@ -20,6 +20,15 @@ class IdentifierExtractor
         $this->descendantIdentifierExtractor = $descendantIdentifierExtractor;
     }
 
+    public static function createExtractor(): self
+    {
+        return new IdentifierExtractor(
+            ElementIdentifierExtractor::createExtractor(),
+            VariableValueExtractor::createExtractor(),
+            DescendantIdentifierExtractor::createExtractor()
+        );
+    }
+
     public function extract(string $string): ?string
     {
         $identifier = $this->descendantIdentifierExtractor->extractIdentifier($string);

@@ -9,6 +9,11 @@ class QuotedValueExtractor
     private const DELIMITER = '"';
     private const ESCAPE_CHARACTER = '\\';
 
+    public static function createExtractor(): self
+    {
+        return new QuotedValueExtractor();
+    }
+
     public function extract(string $string): ?string
     {
         if ('' === $string) {

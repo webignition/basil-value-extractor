@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace webignition\BasilValueExtractor\Tests\Unit;
 
-use webignition\BasilValueExtractor\DescendantIdentifierExtractor;
-use webignition\BasilValueExtractor\ElementIdentifierExtractor;
 use webignition\BasilValueExtractor\IdentifierExtractor;
 use webignition\BasilValueExtractor\Tests\DataProvider\DescendantIdentifierDataProviderTrait;
 use webignition\BasilValueExtractor\Tests\DataProvider\ElementIdentifierDataProviderTrait;
 use webignition\BasilValueExtractor\Tests\DataProvider\VariableValueDataProviderTrait;
-use webignition\BasilValueExtractor\VariableValueExtractor;
 
 class IdentifierExtractorTest extends \PHPUnit\Framework\TestCase
 {
@@ -27,14 +24,7 @@ class IdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     {
         parent::setUp();
 
-        $this->extractor = new IdentifierExtractor(
-            new ElementIdentifierExtractor(),
-            new VariableValueExtractor(),
-            new DescendantIdentifierExtractor(
-                new ElementIdentifierExtractor(),
-                new VariableValueExtractor()
-            )
-        );
+        $this->extractor = IdentifierExtractor::createExtractor();
     }
 
     /**

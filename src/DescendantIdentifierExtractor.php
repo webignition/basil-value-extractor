@@ -19,6 +19,14 @@ class DescendantIdentifierExtractor
         $this->variableValueExtractor = $variableValueExtractor;
     }
 
+    public static function createExtractor(): self
+    {
+        return new DescendantIdentifierExtractor(
+            ElementIdentifierExtractor::createExtractor(),
+            VariableValueExtractor::createExtractor()
+        );
+    }
+
     public function extractIdentifier(string $string): ?string
     {
         $parentIdentifier = $this->extractParentIdentifier($string);

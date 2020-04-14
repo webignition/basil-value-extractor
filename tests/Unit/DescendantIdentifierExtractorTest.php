@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace webignition\BasilValueExtractor\Tests\Unit;
 
 use webignition\BasilValueExtractor\DescendantIdentifierExtractor;
-use webignition\BasilValueExtractor\ElementIdentifierExtractor;
 use webignition\BasilValueExtractor\Tests\DataProvider\DescendantIdentifierDataProviderTrait;
-use webignition\BasilValueExtractor\VariableValueExtractor;
 
 class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
 {
@@ -22,10 +20,7 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     {
         parent::setUp();
 
-        $this->extractor = new DescendantIdentifierExtractor(
-            new ElementIdentifierExtractor(),
-            new VariableValueExtractor()
-        );
+        $this->extractor = DescendantIdentifierExtractor::createExtractor();
     }
 
     /**

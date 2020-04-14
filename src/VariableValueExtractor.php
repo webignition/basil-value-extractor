@@ -8,6 +8,11 @@ class VariableValueExtractor
 {
     private const VARIABLE_START_CHARACTER = '$';
 
+    public static function createExtractor(): self
+    {
+        return new VariableValueExtractor();
+    }
+
     public function extract(string $string): ?string
     {
         if ('' === $string) {
