@@ -33,6 +33,10 @@ trait DescendantIdentifierDataProviderTrait
                 'valueString' => '$".great-grandparent" >> $".grandparent >> $".parent" >> $".child"',
                 'expectedValue' => '$".great-grandparent" >> $".grandparent >> $".parent" >> $".child"',
             ],
+            'parent >> child, page element reference' => [
+                'valueString' => '$parent >> $".child"',
+                'expectedValue' => '$parent >> $".child"',
+            ],
         ];
 
         foreach ($dataSets as $name => $data) {

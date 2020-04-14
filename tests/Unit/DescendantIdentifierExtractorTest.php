@@ -7,6 +7,7 @@ namespace webignition\BasilValueExtractor\Tests\Unit;
 use webignition\BasilValueExtractor\DescendantIdentifierExtractor;
 use webignition\BasilValueExtractor\ElementIdentifierExtractor;
 use webignition\BasilValueExtractor\Tests\DataProvider\DescendantIdentifierDataProviderTrait;
+use webignition\BasilValueExtractor\VariableValueExtractor;
 
 class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
 {
@@ -22,7 +23,8 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
         parent::setUp();
 
         $this->extractor = new DescendantIdentifierExtractor(
-            new ElementIdentifierExtractor()
+            new ElementIdentifierExtractor(),
+            new VariableValueExtractor()
         );
     }
 
@@ -57,12 +59,23 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @dataProvider descendantIdentifierDataProvider
+     * @dataProvider extractIdentifierReturnsStringDataProvider
      */
     public function testExtractIdentifierReturnsString(string $valueString, string $expectedValue)
     {
         $identifierString = $this->extractor->extractIdentifier($valueString);
 
         $this->assertSame($expectedValue, $identifierString);
+    }
+
+    public function extractIdentifierReturnsStringDataProvider(): array
+    {
+        return [
+            'variable parameter: page-level element, within reference' => [
+                'valueString' => '$form >> $".selector"',
+                'expectedValue' => '$form >> $".selector"',
+            ],
+        ];
     }
 
     /**
@@ -127,6 +140,10 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
             'great-grandparent >> grandparent >> parent >> child' => [
                 'string' => '$".great-grandparent" >> $".grandparent >> $".parent" >> $".child"',
                 'expectedIdentifierString' => '$".great-grandparent" >> $".grandparent >> $".parent"',
+            ],
+            'parent >> child, page element reference' => [
+                'valueString' => '$parent >> $".child"',
+                'expectedValue' => '$parent',
             ],
         ];
     }
@@ -196,6 +213,10 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
             'great-grandparent >> grandparent >> parent >> child' => [
                 'string' => '$".great-grandparent" >> $".grandparent >> $".parent" >> $".child"',
                 'expectedIdentifierString' => '$".child"',
+            ],
+            'parent >> child, page element reference' => [
+                'valueString' => '$parent >> $".child"',
+                'expectedValue' => '$".child"',
             ],
         ];
     }
