@@ -6,9 +6,12 @@ namespace webignition\BasilValueExtractor\Tests\Unit;
 
 use webignition\BasilValueExtractor\DescendantIdentifierExtractor;
 use webignition\BasilValueExtractor\ElementIdentifierExtractor;
+use webignition\BasilValueExtractor\Tests\DataProvider\DescendantIdentifierDataProviderTrait;
 
 class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
 {
+    use DescendantIdentifierDataProviderTrait;
+
     /**
      * @var DescendantIdentifierExtractor
      */
@@ -53,52 +56,13 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @dataProvider descendantIdentifierStringDataProvider
+     * @dataProvider descendantIdentifierDataProvider
      */
-    public function testExtractIdentifierReturnsString(string $string, string $expectedIdentifierString)
+    public function testExtractIdentifierReturnsString(string $valueString, string $expectedValue)
     {
-        $identifierString = $this->extractor->extractIdentifier($string);
+        $identifierString = $this->extractor->extractIdentifier($valueString);
 
-        $this->assertSame($expectedIdentifierString, $identifierString);
-    }
-
-    public function descendantIdentifierStringDataProvider(): array
-    {
-        $dataSets = [
-            'parent >> child' => [
-                'string' => '$".parent" >> $".child"',
-                'expectedIdentifierString' => '$".parent" >> $".child"',
-            ],
-            'parent >> child:position' => [
-                'string' => '$".parent" >> $".child":3',
-                'expectedIdentifierString' => '$".parent" >> $".child":3',
-            ],
-            'parent >> child.attribute' => [
-                'string' => '$".parent" >> $".child".attribute_name',
-                'expectedIdentifierString' => '$".parent" >> $".child".attribute_name',
-            ],
-            'parent >> child:position.attribute' => [
-                'string' => '$".parent" >> $".child":5.attribute_name',
-                'expectedIdentifierString' => '$".parent" >> $".child":5.attribute_name',
-            ],
-            'grandparent >> parent >> child' => [
-                'string' => '$".grandparent" >> $".parent" >> $".child"',
-                'expectedIdentifierString' => '$".grandparent" >> $".parent" >> $".child"',
-            ],
-            'great-grandparent >> grandparent >> parent >> child' => [
-                'string' => '$".great-grandparent" >> $".grandparent >> $".parent" >> $".child"',
-                'expectedIdentifierString' => '$".great-grandparent" >> $".grandparent >> $".parent" >> $".child"',
-            ],
-        ];
-
-        foreach ($dataSets as $name => $data) {
-            $additionalDataName = $name . ' with additional non-relevant data';
-            $data['string'] .= ' additional non-relevant data';
-
-            $dataSets[$additionalDataName] = $data;
-        }
-
-        return $dataSets;
+        $this->assertSame($expectedValue, $identifierString);
     }
 
     /**
