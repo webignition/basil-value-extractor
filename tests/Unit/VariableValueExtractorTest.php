@@ -45,11 +45,22 @@ class VariableValueExtractorTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @dataProvider variableValueDataProvider
+     * @dataProvider extractReturnsStringDataProvider
      */
     public function testExtractReturnsString(string $valueString, string $expectedValue)
     {
         $identifierString = $this->extractor->extract($valueString);
 
         $this->assertSame($expectedValue, $identifierString);
+    }
+
+    public function extractReturnsStringDataProvider(): array
+    {
+        return [
+            'variable parameter: page-level element, within reference' => [
+                'valueString' => '$form >> $".selector"',
+                'expectedValue' => '$form',
+            ],
+        ];
     }
 }

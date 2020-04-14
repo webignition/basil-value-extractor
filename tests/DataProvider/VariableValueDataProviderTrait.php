@@ -69,10 +69,6 @@ trait VariableValueDataProviderTrait
                 'valueString' => '$form',
                 'expectedValue' => '$form',
             ],
-            'variable parameter: page-level element, within reference' => [
-                'valueString' => '$form >> $".selector"',
-                'expectedValue' => '$form',
-            ],
         ];
     }
 }

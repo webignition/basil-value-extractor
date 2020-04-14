@@ -31,7 +31,8 @@ class IdentifierExtractorTest extends \PHPUnit\Framework\TestCase
             new ElementIdentifierExtractor(),
             new VariableValueExtractor(),
             new DescendantIdentifierExtractor(
-                new ElementIdentifierExtractor()
+                new ElementIdentifierExtractor(),
+                new VariableValueExtractor()
             )
         );
     }

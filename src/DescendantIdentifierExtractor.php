@@ -9,10 +9,14 @@ class DescendantIdentifierExtractor
     private const DESCENDANT_SEPARATOR = ' >> ';
 
     private $elementIdentifierExtractor;
+    private $variableValueExtractor;
 
-    public function __construct(ElementIdentifierExtractor $pageElementIdentifierExtractor)
-    {
+    public function __construct(
+        ElementIdentifierExtractor $pageElementIdentifierExtractor,
+        VariableValueExtractor $variableValueExtractor
+    ) {
         $this->elementIdentifierExtractor = $pageElementIdentifierExtractor;
+        $this->variableValueExtractor = $variableValueExtractor;
     }
 
     public function extractIdentifier(string $string): ?string
@@ -37,7 +41,7 @@ class DescendantIdentifierExtractor
         $parentIdentifier = '';
         $remainder = $string;
 
-        $firstIdentifier = $this->elementIdentifierExtractor->extract($remainder);
+        $firstIdentifier = $this->extractFirstIdentifier($remainder);
         if (null === $firstIdentifier) {
             return null;
         }
@@ -54,7 +58,7 @@ class DescendantIdentifierExtractor
             $parentIdentifier .= $firstIdentifier . self::DESCENDANT_SEPARATOR;
             $remainder = substr($remainder, $descendantSeparatorLength);
 
-            $firstIdentifier = $this->elementIdentifierExtractor->extract($remainder);
+            $firstIdentifier = $this->extractFirstIdentifier($remainder);
             if (null === $firstIdentifier) {
                 return $this->rtrimDescendantSeparator($parentIdentifier);
             }
@@ -75,6 +79,16 @@ class DescendantIdentifierExtractor
         }
 
         return $this->doExtractChildIdentifier($string, $parentIdentifier);
+    }
+
+    private function extractFirstIdentifier(string $string): ?string
+    {
+        $identifier = $this->elementIdentifierExtractor->extract($string);
+        if (null !== $identifier) {
+            return $identifier;
+        }
+
+        return $this->variableValueExtractor->extract($string);
     }
 
     private function doExtractChildIdentifier(string $string, string $parentIdentifier): ?string
