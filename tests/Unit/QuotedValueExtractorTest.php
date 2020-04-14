@@ -15,13 +15,13 @@ class QuotedValueExtractorTest extends \PHPUnit\Framework\TestCase
     /**
      * @var QuotedValueExtractor
      */
-    private $quotedValueExtractor;
+    private $extractor;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->quotedValueExtractor = new QuotedValueExtractor();
+        $this->extractor = new QuotedValueExtractor();
     }
 
     /**
@@ -29,7 +29,7 @@ class QuotedValueExtractorTest extends \PHPUnit\Framework\TestCase
      */
     public function testExtractReturnsNull(string $valueString)
     {
-        $this->assertNull($this->quotedValueExtractor->extract($valueString));
+        $this->assertNull($this->extractor->extract($valueString));
     }
 
     public function extractReturnsNullDataProvider(): array
@@ -50,7 +50,7 @@ class QuotedValueExtractorTest extends \PHPUnit\Framework\TestCase
 
         PHPMockery::mock('webignition\BasilValueExtractor', 'preg_split')->andReturnFalse();
 
-        $this->assertEquals('""', $this->quotedValueExtractor->extract($valueString));
+        $this->assertEquals('""', $this->extractor->extract($valueString));
 
         \Mockery::close();
     }
@@ -60,7 +60,7 @@ class QuotedValueExtractorTest extends \PHPUnit\Framework\TestCase
      */
     public function testExtractReturnsString(string $valueString, string $expectedValue)
     {
-        $value = $this->quotedValueExtractor->extract($valueString);
+        $value = $this->extractor->extract($valueString);
 
         $this->assertSame($expectedValue, $value);
     }
