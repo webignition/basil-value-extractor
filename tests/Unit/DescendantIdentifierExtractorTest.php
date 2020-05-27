@@ -11,10 +11,7 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
 {
     use DescendantIdentifierDataProviderTrait;
 
-    /**
-     * @var DescendantIdentifierExtractor
-     */
-    private $extractor;
+    private DescendantIdentifierExtractor $extractor;
 
     protected function setUp(): void
     {
