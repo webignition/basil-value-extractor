@@ -6,9 +6,9 @@ namespace webignition\BasilValueExtractor;
 
 class IdentifierExtractor
 {
-    private $elementIdentifierExtractor;
-    private $variableValueExtractor;
-    private $descendantIdentifierExtractor;
+    private ElementIdentifierExtractor $elementIdentifierExtractor;
+    private VariableValueExtractor $variableValueExtractor;
+    private DescendantIdentifierExtractor $descendantIdentifierExtractor;
 
     public function __construct(
         ElementIdentifierExtractor $elementIdentifierExtractor,

@@ -17,10 +17,7 @@ class ValueExtractorTest extends \PHPUnit\Framework\TestCase
     use VariableValueDataProviderTrait;
     use QuotedValueDataProviderTrait;
 
-    /**
-     * @var ValueExtractor
-     */
-    private $extractor;
+    private ValueExtractor $extractor;
 
     protected function setUp(): void
     {

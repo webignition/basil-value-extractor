@@ -6,8 +6,8 @@ namespace webignition\BasilValueExtractor;
 
 class ValueExtractor
 {
-    private $quotedValueExtractor;
-    private $identifierExtractor;
+    private QuotedValueExtractor $quotedValueExtractor;
+    private IdentifierExtractor $identifierExtractor;
 
     public function __construct(QuotedValueExtractor $quotedValueExtractor, IdentifierExtractor $identifierExtractor)
     {

@@ -11,10 +11,7 @@ class ElementIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
 {
     use ElementIdentifierDataProviderTrait;
 
-    /**
-     * @var ElementIdentifierExtractor
-     */
-    private $extractor;
+    private ElementIdentifierExtractor $extractor;
 
     protected function setUp(): void
     {

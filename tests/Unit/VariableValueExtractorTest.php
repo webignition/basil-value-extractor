@@ -11,10 +11,7 @@ class VariableValueExtractorTest extends \PHPUnit\Framework\TestCase
 {
     use VariableValueDataProviderTrait;
 
-    /**
-     * @var VariableValueExtractor
-     */
-    private $extractor;
+    private VariableValueExtractor $extractor;
 
     protected function setUp(): void
     {

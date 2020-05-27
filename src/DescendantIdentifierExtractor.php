@@ -8,8 +8,8 @@ class DescendantIdentifierExtractor
 {
     private const DESCENDANT_SEPARATOR = ' >> ';
 
-    private $elementIdentifierExtractor;
-    private $variableValueExtractor;
+    private ElementIdentifierExtractor $elementIdentifierExtractor;
+    private VariableValueExtractor $variableValueExtractor;
 
     public function __construct(
         ElementIdentifierExtractor $pageElementIdentifierExtractor,
