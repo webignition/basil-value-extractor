@@ -29,11 +29,14 @@ class ValueExtractorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider returnsEmptyValueDataProvider
      */
-    public function testExtractReturnsEmptyValue(string $string)
+    public function testExtractReturnsEmptyValue(string $string): void
     {
         $this->assertNull($this->extractor->extract($string));
     }
 
+    /**
+     * @return array[]
+     */
     public function returnsEmptyValueDataProvider(): array
     {
         return [
@@ -49,7 +52,7 @@ class ValueExtractorTest extends \PHPUnit\Framework\TestCase
      * @dataProvider variableValueDataProvider
      * @dataProvider quotedValueDataProvider
      */
-    public function testExtractReturnsString(string $valueString, string $expectedValue)
+    public function testExtractReturnsString(string $valueString, string $expectedValue): void
     {
         $identifierString = $this->extractor->extract($valueString);
 
