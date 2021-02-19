@@ -23,11 +23,14 @@ class ElementIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider unhandledStringsDataProvider
      */
-    public function testExtractReturnsEmptyValue(string $string)
+    public function testExtractReturnsEmptyValue(string $string): void
     {
         $this->assertNull($this->extractor->extract($string));
     }
 
+    /**
+     * @return array[]
+     */
     public function unhandledStringsDataProvider(): array
     {
         return [
@@ -43,7 +46,7 @@ class ElementIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider elementIdentifierDataProvider
      */
-    public function testExtractReturnsString(string $valueString, string $expectedValue)
+    public function testExtractReturnsString(string $valueString, string $expectedValue): void
     {
         $identifierString = $this->extractor->extract($valueString);
 

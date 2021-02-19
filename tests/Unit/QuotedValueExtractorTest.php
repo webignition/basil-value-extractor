@@ -24,11 +24,14 @@ class QuotedValueExtractorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider extractReturnsNullDataProvider
      */
-    public function testExtractReturnsNull(string $valueString)
+    public function testExtractReturnsNull(string $valueString): void
     {
         $this->assertNull($this->extractor->extract($valueString));
     }
 
+    /**
+     * @return array[]
+     */
     public function extractReturnsNullDataProvider(): array
     {
         return [
@@ -41,7 +44,7 @@ class QuotedValueExtractorTest extends \PHPUnit\Framework\TestCase
         ];
     }
 
-    public function testExtractReturnsEmptyValueForNonSplittableString()
+    public function testExtractReturnsEmptyValueForNonSplittableString(): void
     {
         $valueString = '"causes preg_split to fail"';
 
@@ -55,7 +58,7 @@ class QuotedValueExtractorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider quotedValueDataProvider
      */
-    public function testExtractReturnsString(string $valueString, string $expectedValue)
+    public function testExtractReturnsString(string $valueString, string $expectedValue): void
     {
         $value = $this->extractor->extract($valueString);
 

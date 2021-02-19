@@ -23,11 +23,14 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider returnsEmptyValueDataProvider
      */
-    public function testExtractIdentifierReturnsEmptyValue(string $string)
+    public function testExtractIdentifierReturnsEmptyValue(string $string): void
     {
         $this->assertNull($this->extractor->extractIdentifier($string));
     }
 
+    /**
+     * @return array[]
+     */
     public function returnsEmptyValueDataProvider(): array
     {
         return [
@@ -53,13 +56,16 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
      * @dataProvider descendantIdentifierDataProvider
      * @dataProvider extractIdentifierReturnsStringDataProvider
      */
-    public function testExtractIdentifierReturnsString(string $valueString, string $expectedValue)
+    public function testExtractIdentifierReturnsString(string $valueString, string $expectedValue): void
     {
         $identifierString = $this->extractor->extractIdentifier($valueString);
 
         $this->assertSame($expectedValue, $identifierString);
     }
 
+    /**
+     * @return array[]
+     */
     public function extractIdentifierReturnsStringDataProvider(): array
     {
         return [
@@ -73,11 +79,14 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider extractParentIdentifierReturnsEmptyValueDataProvider
      */
-    public function testExtractParentIdentifierReturnsEmptyValue(string $string)
+    public function testExtractParentIdentifierReturnsEmptyValue(string $string): void
     {
         $this->assertNull($this->extractor->extractParentIdentifier($string));
     }
 
+    /**
+     * @return array[]
+     */
     public function extractParentIdentifierReturnsEmptyValueDataProvider(): array
     {
         return [
@@ -99,13 +108,16 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider extractParentIdentifierDataProvider
      */
-    public function testExtractParentIdentifierReturnsString(string $string, string $expectedParentIdentifier)
+    public function testExtractParentIdentifierReturnsString(string $string, string $expectedParentIdentifier): void
     {
         $identifierString = $this->extractor->extractParentIdentifier($string);
 
         $this->assertSame($expectedParentIdentifier, $identifierString);
     }
 
+    /**
+     * @return array[]
+     */
     public function extractParentIdentifierDataProvider(): array
     {
         return [
@@ -143,11 +155,14 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider extractChildIdentifierReturnsEmptyValueDataProvider
      */
-    public function testExtractChildIdentifierReturnsEmptyValue(string $string)
+    public function testExtractChildIdentifierReturnsEmptyValue(string $string): void
     {
         $this->assertNull($this->extractor->extractChildIdentifier($string));
     }
 
+    /**
+     * @return array[]
+     */
     public function extractChildIdentifierReturnsEmptyValueDataProvider(): array
     {
         return [
@@ -172,13 +187,16 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider extractChildIdentifierDataProvider
      */
-    public function testExtractChildIdentifierReturnsString(string $string, string $expectedChildIdentifier)
+    public function testExtractChildIdentifierReturnsString(string $string, string $expectedChildIdentifier): void
     {
         $identifierString = $this->extractor->extractChildIdentifier($string);
 
         $this->assertSame($expectedChildIdentifier, $identifierString);
     }
 
+    /**
+     * @return array[]
+     */
     public function extractChildIdentifierDataProvider(): array
     {
         return [

@@ -6,6 +6,9 @@ namespace webignition\BasilValueExtractor\Tests\DataProvider;
 
 trait DescendantIdentifierDataProviderTrait
 {
+    /**
+     * @return array[]
+     */
     public function descendantIdentifierDataProvider(): array
     {
         $dataSets = [

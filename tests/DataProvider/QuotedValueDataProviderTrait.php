@@ -6,6 +6,9 @@ namespace webignition\BasilValueExtractor\Tests\DataProvider;
 
 trait QuotedValueDataProviderTrait
 {
+    /**
+     * @return array[]
+     */
     public function quotedValueDataProvider(): array
     {
         return [
