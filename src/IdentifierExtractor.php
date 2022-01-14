@@ -6,18 +6,11 @@ namespace webignition\BasilValueExtractor;
 
 class IdentifierExtractor
 {
-    private ElementIdentifierExtractor $elementIdentifierExtractor;
-    private VariableValueExtractor $variableValueExtractor;
-    private DescendantIdentifierExtractor $descendantIdentifierExtractor;
-
     public function __construct(
-        ElementIdentifierExtractor $elementIdentifierExtractor,
-        VariableValueExtractor $variableValueExtractor,
-        DescendantIdentifierExtractor $descendantIdentifierExtractor
+        private ElementIdentifierExtractor $elementIdentifierExtractor,
+        private VariableValueExtractor $variableValueExtractor,
+        private DescendantIdentifierExtractor $descendantIdentifierExtractor
     ) {
-        $this->elementIdentifierExtractor = $elementIdentifierExtractor;
-        $this->variableValueExtractor = $variableValueExtractor;
-        $this->descendantIdentifierExtractor = $descendantIdentifierExtractor;
     }
 
     public static function createExtractor(): self

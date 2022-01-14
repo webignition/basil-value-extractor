@@ -6,13 +6,10 @@ namespace webignition\BasilValueExtractor;
 
 class ValueExtractor
 {
-    private QuotedValueExtractor $quotedValueExtractor;
-    private IdentifierExtractor $identifierExtractor;
-
-    public function __construct(QuotedValueExtractor $quotedValueExtractor, IdentifierExtractor $identifierExtractor)
-    {
-        $this->quotedValueExtractor = $quotedValueExtractor;
-        $this->identifierExtractor = $identifierExtractor;
+    public function __construct(
+        private QuotedValueExtractor $quotedValueExtractor,
+        private IdentifierExtractor $identifierExtractor
+    ) {
     }
 
     public static function createExtractor(): self
