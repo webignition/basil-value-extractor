@@ -41,7 +41,7 @@ class ElementIdentifierExtractor
             $position = $this->findPosition($remainder);
 
             if (is_string($position)) {
-                $identifierString .= self::POSITION_DELIMITER . (string) $position;
+                $identifierString .= self::POSITION_DELIMITER . $position;
                 $remainder = mb_substr($remainder, strlen($position));
             }
         }
