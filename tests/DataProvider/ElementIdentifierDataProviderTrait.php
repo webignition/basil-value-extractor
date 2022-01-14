@@ -7,7 +7,7 @@ namespace webignition\BasilValueExtractor\Tests\DataProvider;
 trait ElementIdentifierDataProviderTrait
 {
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function elementIdentifierDataProvider(): array
     {
