@@ -62,7 +62,7 @@ class DescendantIdentifierExtractor
             return null;
         }
 
-        while ($remainderStart === self::DESCENDANT_SEPARATOR) {
+        while (self::DESCENDANT_SEPARATOR === $remainderStart) {
             $parentIdentifier .= $firstIdentifier . self::DESCENDANT_SEPARATOR;
             $remainder = substr($remainder, $descendantSeparatorLength);
 
@@ -103,7 +103,6 @@ class DescendantIdentifierExtractor
     {
         $childComponent = substr($string, strlen($parentIdentifier));
         $childComponent = $this->ltrimDescendantSeparator($childComponent);
-
 
         $childIdentifier = $this->elementIdentifierExtractor->extract($childComponent);
         if (null === $childIdentifier) {

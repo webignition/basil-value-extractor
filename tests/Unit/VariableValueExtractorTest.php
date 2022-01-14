@@ -29,7 +29,7 @@ class VariableValueExtractorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function unhandledStringsDataProvider(): array
     {
@@ -55,7 +55,7 @@ class VariableValueExtractorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function extractReturnsStringDataProvider(): array
     {

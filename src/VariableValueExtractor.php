@@ -30,7 +30,7 @@ class VariableValueExtractor
         $isInDefaultValue = false;
         $previousCharacter = '';
 
-        for ($i = 0; $i < $length; $i++) {
+        for ($i = 0; $i < $length; ++$i) {
             $currentCharacter = mb_substr($string, $i, 1);
 
             if ($defaultValueDelimiter === $currentCharacter) {

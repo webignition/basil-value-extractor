@@ -33,7 +33,7 @@ class IdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function returnsEmptyValueDataProvider(): array
     {

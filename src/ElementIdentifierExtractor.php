@@ -41,12 +41,12 @@ class ElementIdentifierExtractor
             $position = $this->findPosition($remainder);
 
             if (is_string($position)) {
-                $identifierString .= self::POSITION_DELIMITER . (string)$position;
+                $identifierString .= self::POSITION_DELIMITER . (string) $position;
                 $remainder = mb_substr($remainder, strlen($position));
             }
         }
 
-        if ($remainder !== '' && self::ATTRIBUTE_NAME_DELIMITER === $remainder[0]) {
+        if ('' !== $remainder && self::ATTRIBUTE_NAME_DELIMITER === $remainder[0]) {
             $remainder = mb_substr($remainder, 1);
             $attributeName = $this->findAttributeName($remainder);
 
@@ -79,7 +79,7 @@ class ElementIdentifierExtractor
         while (null === $endingQuotePosition) {
             $nextQuotePosition = mb_strpos($string, self::LOCATOR_DELIMITER, $currentQuotePosition + 1);
 
-            if (mb_substr($string, $nextQuotePosition - 1, 2) !== self::ESCAPED_LOCATOR_DELIMITER) {
+            if (self::ESCAPED_LOCATOR_DELIMITER !== mb_substr($string, $nextQuotePosition - 1, 2)) {
                 $endingQuotePosition = $nextQuotePosition;
             } else {
                 $currentQuotePosition = mb_strpos($string, self::LOCATOR_DELIMITER, $nextQuotePosition + 1);
@@ -132,7 +132,7 @@ class ElementIdentifierExtractor
         $endFound = false;
         $characterIndex = 0;
 
-        while ($endFound === false) {
+        while (false === $endFound) {
             $character = $characters[$characterIndex] ?? null;
             if (null === $character || ' ' === $character) {
                 $endFound = true;
@@ -140,7 +140,7 @@ class ElementIdentifierExtractor
                 $content .= $character;
             }
 
-            $characterIndex++;
+            ++$characterIndex;
         }
 
         return $content;

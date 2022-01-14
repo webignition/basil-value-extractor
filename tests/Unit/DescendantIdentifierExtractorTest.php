@@ -29,7 +29,7 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function returnsEmptyValueDataProvider(): array
     {
@@ -64,7 +64,7 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function extractIdentifierReturnsStringDataProvider(): array
     {
@@ -85,7 +85,7 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function extractParentIdentifierReturnsEmptyValueDataProvider(): array
     {
@@ -116,7 +116,7 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function extractParentIdentifierDataProvider(): array
     {
@@ -161,7 +161,7 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function extractChildIdentifierReturnsEmptyValueDataProvider(): array
     {
@@ -195,7 +195,7 @@ class DescendantIdentifierExtractorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @return array[]
+     * @return array<mixed>
      */
     public function extractChildIdentifierDataProvider(): array
     {
